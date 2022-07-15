@@ -15,12 +15,15 @@ const items = createReducer([], {
     ];
   },
 
-  [deleteContact]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+  [deleteContact]: (state, { payload }) => {
+    return state.filter(({ id }) => id !== payload);
+  },
 });
 
 const filter = createReducer('', {
-  [changeFilter]: (_, { payload }) => payload,
+  [changeFilter]: (_, { payload }) => {
+    return payload;
+  },
 });
 
 export default combineReducers({
