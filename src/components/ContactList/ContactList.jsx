@@ -6,16 +6,17 @@ export default function ContactList() {
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
+  const handleDelete = id => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
         return (
           <li key={id} className={s.item}>
             {name}: {number}
-            <button
-              onClick={id => dispatch(deleteContact(id))}
-              className={s.button}
-            >
+            <button onClick={() => handleDelete(id)} className={s.button}>
               Delete
             </button>
           </li>
