@@ -32,10 +32,11 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const existContact = contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(name.toLowerCase());
-    });
-    if (existContact.length > 0) {
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       return alert(`${name}, is already in your contacts`);
     }
     dispatch(addContact({ name, number }));
